@@ -1,0 +1,25 @@
+<div class="users-menu">
+  <ul class="search-result">
+    <li *ngFor="let carta of lstCardsname">
+        {{carta}}
+    </li>
+  </ul>
+</div>
+
+<h2>Cartas BD</h2>
+<div>
+  <label>Busqueda de cartas:</label>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)">
+  <ul class="search-result">
+    <li *ngFor="let cards of lstCardsBusqueda">
+      <a routerLink="/detail/{{cards}}">
+        {{cards}}
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="users-menu">
+  <a *ngFor="let card of lstCards"
+   routerLink="/detail/{{card}}" class="a">
+    {{card}}
+  </a>

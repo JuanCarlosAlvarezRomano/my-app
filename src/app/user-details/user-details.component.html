@@ -1,0 +1,14 @@
+
+<div *ngIf="card">
+  <h2>{{card | uppercase}} Details</h2>
+  <div>
+    <label for="user-name">Card name: {{card}}</label>
+  </div>
+  <div>
+    <img src={{img}}>
+  </div>
+  <div>
+    <button  type="button" (click)="addList(card)">Añadir a lista</button>
+  </div>
+  <button type="button" (click)="goBack()">go back</button>
+</div>
