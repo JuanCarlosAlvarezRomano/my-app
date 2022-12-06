@@ -7,6 +7,9 @@ label {
     font-size: 1em;
     padding: .5rem;
   }
+  div{
+    text-align: center;
+  }
   th{
     padding-left: 5px;
     padding-right: 5px;
@@ -26,6 +29,7 @@ label {
     border-collapse: collapse;
   }
   table{
+    margin: auto;
     border: 1px solid black;
     border-collapse: collapse;
   }

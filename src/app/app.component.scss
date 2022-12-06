@@ -7,10 +7,15 @@ h1 {
     margin-bottom: 0;
     text-align: center;
   }
-  body{
-    margin-left: 150px;
-    margin-right: 150px;
-    width: 1000px;
+  div.content{
+    margin: auto;
+    max-width: 1000px;
+    width: 100%;
+  }
+  nav{
+    width: 300px;
+    margin: auto;
+    text-align: center;
   }
   nav a {
     padding: 1rem;
