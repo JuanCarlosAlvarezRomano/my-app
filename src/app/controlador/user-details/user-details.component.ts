@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
-import { User } from '../user';
+import { User } from '../../user';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { UserService } from '../user.service'; 
+import { UserService } from '../../servicio/user.service'; 
 
 @Component({
   selector: 'app-user-details',
@@ -13,6 +13,8 @@ export class UserDetailsComponent implements OnInit {
   user: User | undefined;
   card: string | undefined;
   img: string | undefined;
+  descripcion: string | undefined;
+  coste: string | undefined;
   lstCards: String[]=[];
 
   constructor(  
@@ -38,11 +40,13 @@ export class UserDetailsComponent implements OnInit {
     .subscribe(card => {
        this.img = card?.image_uris?.small;
        this.card = card?.name;
+       this.coste = card?.mana_cost;
+       this.descripcion = card?.oracle_text;
     });
   }
 
-  addList(nombre: String){
-    this.userService.addlist(nombre);
+  addList(nombre: String, img: string){
+    this.userService.addlist(nombre, img);
   }
   
   goBack(): void {

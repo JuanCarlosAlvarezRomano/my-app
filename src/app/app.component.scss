@@ -1,11 +1,22 @@
 /* AppComponent's private CSS styles */
 h1 {
     margin-bottom: 0;
+    text-align: center;
+  }
+  h2 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  body{
+    margin-left: 150px;
+    margin-right: 150px;
+    width: 1000px;
   }
   nav a {
     padding: 1rem;
     text-decoration: none;
     margin-top: 10px;
+    margin-left: 5px;
     display: inline-block;
     background-color: #e8e8e8;
     color: #3d3d3d;

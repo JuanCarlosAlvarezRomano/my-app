@@ -1,0 +1,11 @@
+<div>
+  <label>Busqueda de cartas:</label>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="ab">
+
+</div>
+<div class="users-menu">
+  <a *ngFor="let card of lstCards"
+   routerLink="/detail/{{card}}" class="a">
+    {{card}}
+  </a>
+</div>

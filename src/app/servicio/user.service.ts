@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
-import { Usuarios } from './mock-users';
+import { User } from '../user';
+import { Usuarios } from '../mock-users';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { Card, Cards } from 'scryfall-api';
@@ -12,6 +12,7 @@ export class UserService {
 
   card: string | undefined;
   lstcards: String[]=[];
+  lstimg: String[]=[];
   constructor(private messageService: MessageService) { }
 
   //getUser():Observable<User[]> {
@@ -30,12 +31,14 @@ export class UserService {
     let carta: String | undefined;
     const cardname = await this.obtencarta(nombre).then(data => {return data})
 
-    this.messageService.add(`CartaService: fetched Card nombre=${nombre}`);
+    
     return of(cardname);
   }
 
-  addlist(nombre: String){
+  addlist(nombre: String, img: String){
     this.lstcards.push(nombre);
+    this.lstimg.push(img);
+    this.messageService.add(`CartaService: Carta añadida=${nombre}`);
   }
 
   obtencarta(nombre: string){

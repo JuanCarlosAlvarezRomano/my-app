@@ -1,0 +1,29 @@
+
+<div *ngIf="card && img">
+  <h2>{{card | uppercase}} Details</h2>
+  <div>
+    
+  </div>
+  <div style="align-items: center;">
+    <table>
+      <tr>
+        <th>Imagen</th>
+        <th>Nombre de la carta</th>
+        <th>Coste</th>
+        <th>Descripción</th>
+      </tr>
+      <tr>
+        <td><img src={{img}}></td>
+        <td><label for="user-name">{{card}}</label></td>
+        <td><label for="user-name">{{coste}}</label></td>
+        <td><label for="user-name">{{descripcion}}</label></td>
+      </tr>
+    </table>
+
+  </div>
+  <div>
+    <button  type="button" (click)="addList(card, img)">Añadir a lista</button>
+    
+    <button type="button" (click)="goBack()">go back</button>
+  </div>
+</div>

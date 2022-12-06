@@ -1,0 +1,10 @@
+<table>
+    <tr>
+      <th>Imagen</th>
+      <th>Nombre de la carta</th>
+    </tr>
+    <tr  *ngFor="let img of lstImagen; index as i">
+      <td><img src={{img}}></td>
+      <td><label for="user-name">{{lstCardsname[i]}}</label></td>
+    </tr>
+  </table>

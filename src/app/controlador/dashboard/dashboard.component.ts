@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { UserService } from '../user.service';
+import { User } from '../../user';
+import { UserService } from '../../servicio/user.service';
 import { Cards } from 'scryfall-api';
 
 @Component({
@@ -42,10 +42,10 @@ export class DashboardComponent implements OnInit {
   }
 
   search(nombre: string){
-    this.lstCardsBusqueda=[];
+    this.lstCards=[];
     Cards.autoCompleteName(nombre).then(results => {
       for (const result of results) {
-        this.lstCardsBusqueda.push(result);
+        this.lstCards.push(result);
         console.log(result);
         // Bloodscent
         // Blood Scrivener
