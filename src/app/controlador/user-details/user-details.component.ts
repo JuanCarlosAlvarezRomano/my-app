@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Injectable } from '@angular/core';
+import { Component, OnInit, Input, Injectable, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../../servicio/user.service'; 
@@ -29,7 +29,6 @@ export class UserDetailsComponent implements OnInit {
     //this.getHero();
     this.getCard();
   }
-
   //Metodo asincrono que obtine una carta en funcion de un nombre completo
   async getCard():Promise<void> {
     const nombre = String(this.route.snapshot.paramMap.get('id'));

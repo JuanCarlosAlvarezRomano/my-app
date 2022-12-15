@@ -8,7 +8,8 @@ export class MessageService {
 
   //Metodo para añadir un mensaje al log
   add(message: string) {
-    this.messages.push(message);
+    let fecha = new Date;
+    this.messages.push(fecha+" "+message);
   }
 
   //Metodo para limpiar todos los mensajes
