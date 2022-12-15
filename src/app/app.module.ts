@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UsersComponent } from './repositorio/users/users.component';
 import { FormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './controlador/user-details/user-details.component';
 import { MessagesComponent } from './repositorio/messages/messages.component';
@@ -16,7 +15,6 @@ import { ListadoComponent } from './repositorio/listado/listado.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent,
     UserDetailsComponent,
     MessagesComponent,
     DashboardComponent,

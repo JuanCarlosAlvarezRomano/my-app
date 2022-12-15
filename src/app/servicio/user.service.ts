@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { User } from '../user';
-import { Usuarios } from '../mock-users';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { Card, Cards } from 'scryfall-api';
@@ -9,38 +7,38 @@ import { Card, Cards } from 'scryfall-api';
   providedIn: 'root'
 })
 export class UserService {
-
-  card: string | undefined;
+  //Lista de nombres de cartas guardadas
   lstcards: String[]=[];
+  //Lista de URL de imagenes de las cartas guardadas
   lstimg: String[]=[];
+  
   constructor(private messageService: MessageService) { }
 
-  //getUser():Observable<User[]> {
-  //  const users = of(Usuarios);
-  //  this.messageService.add('UserService: fetched users');
-  //  return users;
- // }
-
- // getUsuario(id: Number): Observable<User>{
-  //  const usuario = Usuarios.find(u => u.id === id)!;
- //   this.messageService.add(`UsuarioService: fetched hero id=${id}`);
- //   return of(usuario);
-  //}
-
+  //Metodo asincrono para obtener una carta
   async getCard(nombre: string): Promise<Observable<Card | undefined>>{
-    let carta: String | undefined;
     const cardname = await this.obtencarta(nombre).then(data => {return data})
 
-    
     return of(cardname);
   }
 
+  //Metodo para añadir una carta a la lista de cartas guardadas
   addlist(nombre: String, img: String){
-    this.lstcards.push(nombre);
-    this.lstimg.push(img);
-    this.messageService.add(`CartaService: Carta añadida=${nombre}`);
+    let contador = 0
+    this.lstcards.forEach(element => {
+      if(element == nombre){
+        contador++;
+      }
+    });
+    if(contador>=4){
+      this.messageService.add(`CartaService: Ya hay 4 cartas con el nombre=${nombre}, por favor no añada mas de 4 cartas iguales`);
+    }else{
+      this.lstcards.push(nombre);
+      this.lstimg.push(img);
+      this.messageService.add(`CartaService: Carta añadida=${nombre}`);
+    }
   }
 
+  //Metodo auxiliar para obtener una carta
   obtencarta(nombre: string){
     const card=Cards.byName(nombre).then(response =>response);
     return card;

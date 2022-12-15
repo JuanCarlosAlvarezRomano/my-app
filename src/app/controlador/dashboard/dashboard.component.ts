@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../user';
 import { UserService } from '../../servicio/user.service';
 import { Cards } from 'scryfall-api';
 
@@ -10,18 +9,20 @@ import { Cards } from 'scryfall-api';
 })
 export class DashboardComponent implements OnInit {
 
-  lstUser: User[] = [];
+  //Lista de cartas obtenida de la busqueda
   lstCards: String[] = [];
-  lstCardsBusqueda: String[] = [];
+  //Lista de nombres de las cartas ya obtenidas
   lstCardsname: String[] = [];
 
   constructor(private userService: UserService) { }
 
+  //Metodo que se realiza al iniciar el componente
   ngOnInit(): void {
     this.getUsers();
     this.getList();
   }
 
+  //Metodo para buscar cartas de forma predefinida al iniciar el componente
   getUsers():void{
    // this.userService.getUser().subscribe(users => this.lstUser = users.slice(1,5));
     Cards.autoCompleteName('ab').then(results => {
@@ -37,10 +38,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  //Metodo para obtener la lista de cartas guardadas
   getList(){
     this.lstCardsname = this.userService.lstcards
   }
 
+  //Metodo para buscar una carta por el nombre que ponga el usuario
   search(nombre: string){
     this.lstCards=[];
     Cards.autoCompleteName(nombre).then(results => {

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
-import { User } from '../../user';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../../servicio/user.service'; 
@@ -10,12 +9,14 @@ import { UserService } from '../../servicio/user.service';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit {
-  user: User | undefined;
+  //Nombre de la carta
   card: string | undefined;
+  //URL de la imagen de la carta
   img: string | undefined;
+  //Descripcion de la carta
   descripcion: string | undefined;
+  //Coste de la carta
   coste: string | undefined;
-  lstCards: String[]=[];
 
   constructor(  
     private route: ActivatedRoute,
@@ -23,17 +24,13 @@ export class UserDetailsComponent implements OnInit {
     private location: Location
     ) { }
 
+  //Metodo que se realiza al iniciar el componente
   ngOnInit(): void {
     //this.getHero();
     this.getCard();
   }
 
- // getHero(): void {
- //   const id = Number(this.route.snapshot.paramMap.get('id'));
- //   this.userService.getUsuario(id)
- //     .subscribe(user => this.user = user);
- // }
-
+  //Metodo asincrono que obtine una carta en funcion de un nombre completo
   async getCard():Promise<void> {
     const nombre = String(this.route.snapshot.paramMap.get('id'));
     (await this.userService.getCard(nombre))
@@ -45,10 +42,12 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
+  //Metodo para añadir una carta a la lista
   addList(nombre: String, img: string){
     this.userService.addlist(nombre, img);
   }
   
+  //Metodo para volver a la pagina anterior
   goBack(): void {
     this.location.back();
   }

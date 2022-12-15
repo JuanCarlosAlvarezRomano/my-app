@@ -1,3 +1,7 @@
+
+<div *ngIf="lstCardsname.length<60">
+<h2>El mazo aun esta incompleto, añade 60 cartas para acabarlo</h2>
+</div>
 <table>
     <tr>
       <th>Imagen</th>
@@ -5,6 +9,7 @@
     </tr>
     <tr  *ngFor="let img of lstImagen; index as i">
       <td><img src={{img}}></td>
-      <td><label for="user-name">{{lstCardsname[i]}}</label></td>
+      <td><label for="user-name">{{lstCardsname[i]}}</label>
+      <button  type="button" (click)="borrar(i)">Eliminar</button></td>
     </tr>
   </table>
